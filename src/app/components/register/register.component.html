@@ -1,0 +1,90 @@
+<div id="register" class="col-md-12">
+  <div class="card card-container">
+    <img id="profile-img" src="https://image.freepik.com/free-vector/illustration-stylish-young-man-avatar-man-profile_15870-706.jpg"
+         alt="Profile Image"
+         class="profile-img-card"/>
+    <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="username">Username *</label>
+        <input id="username" type="text" class="form-control" name="username"
+               [(ngModel)]="form.username" required minlength="3" maxlength="20" #username="ngModel"/>
+        <div *ngIf="f.submitted && username.invalid" class="alert-danger">
+          <div *ngIf="username.errors.required">Username is required</div>
+          <div *ngIf="username.errors.minlength">
+            Username must be at least 3 characters
+          </div>
+          <div *ngIf="username.errors.maxlength">
+            Username must be at most 20 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input id="email" type="email" class="form-control" name="email"
+               [(ngModel)]="form.email" required email #email="ngModel"/>
+        <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.email">
+            Email must be a valid email address
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password *</label>
+        <input id="password" type="password" class="form-control" name="password"
+               [(ngModel)]="form.password" required minlength="6" #password="ngModel"/>
+        <div class="alert-danger" *ngIf="f.submitted && password.invalid">
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" type="text" class="form-control" name="name"
+               [(ngModel)]="form.name" minlength="1" maxlength="50" #name="ngModel"/>
+        <div class="alert-danger" *ngIf="f.submitted && name.invalid">
+          <div *ngIf="name.errors.minlength">
+            Name must be at least 1 character
+          </div>
+          <div *ngIf="name.errors.maxlength">
+            Name must be at most 50 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="surname">Surname</label>
+        <input id="surname" type="text" class="form-control" name="surname"
+               [(ngModel)]="form.surname" minlength="1" maxlength="50" #surname="ngModel"/>
+        <div class="alert-danger" *ngIf="f.submitted && surname.invalid">
+          <div *ngIf="surname.errors.minlength">
+            Surname must be at least 1 character
+          </div>
+          <div *ngIf="surname.errors.maxlength">
+            Surname must be at most 50 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input id="age" type="number" class="form-control" name="age"
+               [(ngModel)]="form.age" min="0" #age="ngModel"/>
+        <div class="alert-danger" *ngIf="f.submitted && age.invalid">
+          <div *ngIf="age.errors.min">
+            Age must be not less than 0
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Register</button>
+      </div>
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Registration failed!<br/>{{ errorMessage }}
+      </div>
+    </form>
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Your registration is successful!
+    </div>
+  </div>
+</div>

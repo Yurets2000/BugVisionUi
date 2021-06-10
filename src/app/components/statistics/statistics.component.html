@@ -1,0 +1,20 @@
+<div id="classification-statistics">
+  <div id="page-heading">
+    <h1>Classification Statistics</h1>
+  </div>
+  <canvas id="statisticsChart"></canvas>
+  <mat-form-field class="date-filter" appearance="fill">
+    <mat-label>Date Range</mat-label>
+    <mat-date-range-input
+      [formGroup]="dateFilter"
+      [rangePicker]="datePicker"
+      [comparisonStart]="dateFilter.value.start"
+      [comparisonEnd]="dateFilter.value.end">
+      <input matStartDate placeholder="Start Date" formControlName="start" #dateRangeStart>
+      <input matEndDate placeholder="End Date" formControlName="end" #dateRangeEnd
+        (dateChange)="dateRangeChange(dateRangeStart, dateRangeEnd)">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+    <mat-date-range-picker #datePicker></mat-date-range-picker>
+  </mat-form-field>
+</div>

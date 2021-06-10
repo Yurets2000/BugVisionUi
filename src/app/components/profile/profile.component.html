@@ -1,0 +1,79 @@
+<div *ngIf="user" id="profile" class="col-md-12">
+  <div class="card card-container">
+    <img id="profile-img" src="https://image.freepik.com/free-vector/illustration-stylish-young-man-avatar-man-profile_15870-706.jpg"
+         alt="Profile Image" class="profile-img-card"/>
+    <ul class="actions-list">
+      <li>
+        <button *ngIf="!isEditMode" class="btn btn-primary rounded" (click)="turnOnEditMode()">
+          <i class="fa fa-edit"></i>
+        </button>
+        <button *ngIf="isEditMode" class="btn btn-primary rounded" (click)="turnOffEditMode()">
+          <i class="fa fa-times"></i>
+        </button>
+      </li>
+    </ul>
+    <div *ngIf="!isEditMode" id="profile-info">
+      <p><b>Username:</b> {{user.username}}</p>
+      <p><b>Email:</b> {{user.email}}</p>
+      <p *ngIf="user.name"><b>Name:</b> {{user.name}}</p>
+      <p *ngIf="user.surname"><b>Surname:</b> {{user.surname}}</p>
+      <p *ngIf="user.age"><b>Age:</b> {{user.age}}</p>
+    </div>
+    <div *ngIf="isEditMode" id="profile-edit">
+      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input id="username" type="text" class="form-control" name="username"
+                 disabled="disabled" [value]="user.username"/>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" type="email" class="form-control" name="email"
+                 disabled="disabled" [value]="user.email"/>
+        </div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input id="name" type="text" class="form-control" name="name"
+                 [(ngModel)]="form.name" minlength="1" maxlength="50" #name="ngModel"/>
+          <div class="alert-danger" *ngIf="f.submitted && name.invalid">
+            <div *ngIf="name.errors.minlength">
+              Name must be at least 1 character
+            </div>
+            <div *ngIf="name.errors.maxlength">
+              Name must be at most 50 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="surname">Surname</label>
+          <input id="surname" type="text" class="form-control" name="surname"
+                 [(ngModel)]="form.surname" minlength="1" maxlength="50" #surname="ngModel"/>
+          <div class="alert-danger" *ngIf="f.submitted && surname.invalid">
+            <div *ngIf="surname.errors.minlength">
+              Surname must be at least 1 character
+            </div>
+            <div *ngIf="surname.errors.maxlength">
+              Surname must be at most 50 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input id="age" type="number" class="form-control" name="age"
+                 [(ngModel)]="form.age" min="0" #age="ngModel"/>
+          <div class="alert-danger" *ngIf="f.submitted && age.invalid">
+            <div *ngIf="age.errors.min">
+              Age must be not less than 0
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">Edit</button>
+        </div>
+        <div class="alert alert-warning" *ngIf="f.submitted && isEditFailed">
+          Edit failed!<br/>{{ errorMessage }}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

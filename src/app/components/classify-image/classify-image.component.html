@@ -1,0 +1,23 @@
+<div id="classify-image">
+  <div id="page-heading">
+    <h1>Classify Insect</h1>
+  </div>
+  <div id="image-processing-container">
+    <div id="image-picker">
+      <ngp-image-picker [_config]="imagePickerConf" ($imageChanged)="onImageChange($event)"></ngp-image-picker>
+      <button class="btn btn-primary btn-block" [disabled]="!image" (click)="classifyImage()">Classify</button>
+    </div>
+    <div id="image-tools">
+      <table id="classification-results" *ngIf="result">
+        <tr>
+          <th>Class</th>
+          <th>Correctness</th>
+        </tr>
+        <tr *ngFor="let classificationResponseEntry of result">
+          <td>{{classificationResponseEntry.entryKey}}</td>
+          <td>{{classificationResponseEntry.entryValue}}%</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

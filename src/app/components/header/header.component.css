@@ -1,0 +1,91 @@
+header .logo-wrapper {
+  padding: 20px;
+}
+
+header .main-logo {
+  width: 160px;
+}
+
+.main-logo {
+  display: block;
+  margin: 0 auto;
+}
+
+header p,
+header a,
+header a:hover,
+header a:visited,
+header a:active {
+  color: #A0A0A0;
+}
+
+.action-nav a,
+.action-nav a:hover,
+.action-nav a:visited,
+.action-nav a:active {
+  color: white;
+  font-size: 1.25em;
+}
+
+header a {
+  white-space: nowrap;
+}
+
+.header-head {
+  background-image: url('../../../assets/img/backgrounds/polygon.png');
+}
+
+.user-nav {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  margin: 20px;
+}
+
+.user-nav a {
+  color: black !important;
+  font-size: 18px;
+  font-weight: bolder;
+  padding: 20px;
+}
+
+.header-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header-body {
+  background-color: #202020;
+}
+
+.action-nav {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.action-nav li {
+  padding: 20px;
+  color: white;
+}
+
+.action-nav li:hover {
+  background-color: #585858;
+}
+
+.action-nav a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 767px) {
+  .header-head, .action-nav, .user-nav {
+    flex-direction: column;
+    text-align: center;
+  }
+}

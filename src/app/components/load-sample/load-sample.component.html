@@ -1,0 +1,25 @@
+<div id="load-sample">
+  <div id="page-heading">
+    <h1>Load New Sample</h1>
+  </div>
+  <div id="image-processing-container">
+    <div id="image-picker">
+      <ngp-image-picker #picker [_config]="imagePickerConf" [_imageSrc]="imagePickerSrc" ($imageChanged)="onImageChange($event)"></ngp-image-picker>
+    </div>
+    <div id="image-tools">
+      <mat-radio-group *ngIf="classes" [(ngModel)]="selectedClass">
+        <mat-list id="class-selector" role="list">
+          <mat-list-item role="listitem" *ngFor="let class_item of classes">
+            <mat-radio-button [value]="class_item">{{class_item}}</mat-radio-button>
+          </mat-list-item>
+        </mat-list>
+      </mat-radio-group>
+      <button class="btn btn-primary btn-block" (click)="uploadImage()" [disabled]="!selectedClass || !image">Load</button>
+      <button class="btn btn-primary btn-block" (click)="loadImage()" [disabled]="!selectedClass">Get Image From External API</button>
+      <div id="dataset-info" *ngIf="tempDatasetInfo">
+        <p>Samples loaded: {{tempDatasetInfo.samplesLoaded}}</p>
+        <p>Samples needed to next update: {{tempDatasetInfo.samplesNeededToNextUpdate}}</p>
+      </div>
+    </div>
+  </div>
+</div>

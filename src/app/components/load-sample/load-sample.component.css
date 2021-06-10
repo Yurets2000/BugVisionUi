@@ -1,0 +1,35 @@
+#load-sample {
+  margin: 0 auto;
+  padding-bottom: 200px;
+}
+
+#class-selector {
+  width: 100%;
+  max-height: 150px;
+  overflow-y: scroll;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+#class-selector::-webkit-scrollbar {
+  display: none;
+}
+
+#image-processing-container {
+  display: flex;
+}
+
+#dataset-info {
+  margin: 20px 0;
+}
+
+@media (max-width: 767px) {
+  #image-picker {
+    padding-bottom: 30px;
+  }
+
+  #image-processing-container {
+    flex-direction: column;
+  }
+}

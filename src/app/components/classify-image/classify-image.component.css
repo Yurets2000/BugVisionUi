@@ -1,0 +1,42 @@
+#classify-image {
+  margin: 0 auto;
+  padding-bottom: 200px;
+}
+
+#classification-results {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+#classification-results th {
+  background-color: dodgerblue;
+  color: white;
+}
+
+#classification-results th, #classification-results td {
+  text-align: center;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+#classification-results tr {
+  background-color: rgba(30, 144, 255, 0.2);
+}
+
+#classification-results tr:nth-child(2) {
+  background-color: rgba(30, 144, 255, 0.5);
+  font-weight: bold;
+}
+
+
+@media (max-width: 767px) {
+  #image-picker {
+    padding-bottom: 30px;
+  }
+
+  #image-processing-container {
+    flex-direction: column;
+  }
+}
